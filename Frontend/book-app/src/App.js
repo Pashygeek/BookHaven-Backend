@@ -1,10 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom'
 import './popupsearch.css'
+import SearchBar from './SearchBar';
+import SearchResults from './SearchResults';
+import SuggestionsPopup from './SuggestionsPopup';
+import BookDetails from './BookDetails';
+import FavoritesButton from './FavoritesButton';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
+  const [selectedBookId, setSelectedBookId] = useState(null);
+  const [bookDetails, setBookDetails] = useState(null);
+  const [favorites, setFavorites] = useState([]);
 
   const handleSearch = async ()=> {
     try {
@@ -34,36 +43,70 @@ function App() {
     }
   };
 
+  const handleBookClick=(bookId)=> {
+    setSelectedBookId(bookId);
+  };
+
+  const handleFavoriteToggle = (updatedBook)=> {
+    const isBookInFavorites = favorites.some((book)=> book.id === updatedBook.id);
+
+    let updatedFavorites;
+    if (isBookInFavorites) {
+      updatedFavorites = favorites.filter((book)=> book.id !== updatedBook.id);
+    } else {
+      updatedFavorites = [...favorites, updatedBook];
+
+      setFavorites(updatedFavorites);
+    }
+  }
+
+  useEffect(()=> {
+    if(selectedBookId) {
+      const fetchBookDetails = async()=> {
+        try {
+          const response = await fetch(`http://localhost:9292/books/${selectedBookId}`);
+          const data = await response.json();
+          setBookDetails(data);
+        } catch(error) {
+          console.log("Error:", error);
+        }
+      };
+
+      fetchBookDetails();
+    }
+  }, [selectedBookId]);
+
   return (
-    <div>
-      <input
-      type='text'
-      value={searchQuery}
-      onChange={handleInputChange}
-      />
-      <button onClick={handleSearch}>Search for Book</button>
-      <ul>
-        {searchResults.map((book)=>(
-          <li key={book.id}>
-            <h3>{book.title}</h3>
-            <p>{book.description}</p>
-            <img src={book.image_url} alt={book.title} />
-            <p>Category: {book.category.name}</p>
-            </li>
-        ))}
-      </ul>
-      {suggestions.length > 0 && (
-        <div className="popup-container">
-          <h3>Book Suggestions:</h3>
+    <Router>
+      <div>
+        <nav>
           <ul>
-            {suggestions.map((book)=> (
-              <li key={book.id}>
-                <h4>{book.title}</h4>
-                <img src={book.image_url} alt={book.title} />
-              </li>
-            ))}
+            <li>
+              <Link to='/'>Home</Link>
+            </li>
           </ul>
-        </div>
+        </nav>
+      </div>
+    <div>
+      <SearchBar
+      searchQuery={searchQuery}
+      handleInputChange={handleInputChange}
+      handleSearch={handleSearch} 
+      />
+      <SearchResults
+      searchResults={searchResults}
+      handleBookClick={handleBookClick}
+      />
+      <SuggestionsPopup
+      suggestions={suggestions}
+      handleBookClick={handleBookClick}
+      />
+      <BookDetails bookDetails={bookDetails} />
+      {selectedBookId && (
+        <FavoritesButton
+        book={searchResults.find((book)=> book.id === selectedBookId)}
+        onFavoriteToggle={handleFavoriteToggle}
+        />
       )}
     </div>
   );
