@@ -15,10 +15,20 @@ class ApplicationController < Sinatra::Base
   books.to_json(include: :category)
 end
 
+get '/books/suggestions' do
+  if params[:searchQuery]
+    suggestions = Book.where('title LIKE ?', "#{params[:searchQuery]}%")
+  else
+    suggestions=[]
+  end
+  suggestions.to_json
+end
+
   get '/books/:id' do
     book = Book.find(params[:id])
     book.to_json(include: :category)
   end
+
 
   post '/books' do
     book = Book.create(title: params[:title], author: params[:author], description: params[:description], category_id: params[:category_id])

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './popupsearch.css'
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -52,7 +53,7 @@ function App() {
         ))}
       </ul>
       {suggestions.length > 0 && (
-        <div className='popup-container'>
+        <div className="popup-container">
           <h3>Book Suggestions:</h3>
           <ul>
             {suggestions.map((book)=> (
