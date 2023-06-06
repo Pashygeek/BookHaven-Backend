@@ -7,13 +7,17 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/books' do
-    books = Book.all
-    books.to_json
+    if params[:searchQuery]
+    books = Book.includes(:category).where('title LIKE ?', "#{params[:searchQuery]}%")
+    else
+      books = Book.all.includes(:category)
   end
+  books.to_json(include: :category)
+end
 
   get '/books/:id' do
     book = Book.find(params[:id])
-    book.to_json
+    book.to_json(include: :category)
   end
 
   post '/books' do
