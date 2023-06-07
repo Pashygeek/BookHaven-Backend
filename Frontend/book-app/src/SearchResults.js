@@ -7,7 +7,7 @@ function SearchResults({ searchResults, handleBookClick, handleFavoriteToggle })
             <li key={book.id} onClick={()=> handleBookClick(book.id)}>
                 <h3>{book.title}</h3>
                 <p>{book.description}</p>
-                <img src={book.image_url} alt={book.title} />
+                <img className='book-image' src={book.image_url} alt={book.title} />
                 <p>Category: {book.category.name}</p>
                 <button onClick={()=> handleFavoriteToggle(book)}>Add To Favorites</button>
             </li>

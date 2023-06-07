@@ -1,0 +1,15 @@
+.nav {
+    display: flex;
+    justify-content: center;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.book-image {
+    max-width: 200px;
+    height: auto;
+}
