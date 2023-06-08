@@ -58,13 +58,18 @@ end
   end
 end
 
+get '/favorites' do
+  favorites = Book.includes(:category).where(favorite: true)
+  favorites.to_json(include: :category)
+end
+
 put '/books/:id/favorite' do |id|
   book = Book.find(id)
   book.update(favorite: true)
   book.to_json
 end
 
-put '/book/:id/unfavorite' do |id|
+put '/books/:id/unfavorite' do |id|
   book = Book.find(id)
   book.update(favorite: false)
   book.to_json

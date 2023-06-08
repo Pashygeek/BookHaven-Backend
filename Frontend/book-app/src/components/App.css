@@ -1,0 +1,81 @@
+.nav {
+    background-color: white;
+    height: 30px;
+    display: flex;
+    padding: 0;
+    margin-bottom: -40px;
+    margin-top: 10px;
+    flex-direction: column;
+    align-items: start;
+  }
+  
+  .nav ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin-left: auto;
+    margin-top: -70px;
+  }
+  
+  .nav li {
+    margin-left: 10px;
+  }
+  
+  .nav li a {
+    text-decoration: none;
+    padding: 10px;
+    color: #333;
+    border-radius: 4px;
+    background-color: #eee;
+    transition: background-color 0.3s ease;
+  }
+  
+  .nav li a:hover {
+    background-color: #ddd;
+  }
+  
+  .nav li a.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .title-logo-container {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    margin-left: 10px;
+  }
+  
+  .title-logo-container img {
+    max-width: 70px;
+    height: auto;
+  }
+  
+/* Home page */
+  .home-container {
+    background-image: url('https://www.pwcva.gov/assets/2022-11/mikolaj-DCzpr09cTXY-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; 
+    padding: 20px; 
+  }
+  
+
+.book-image {
+    max-width: 200px;
+    height: auto;
+}

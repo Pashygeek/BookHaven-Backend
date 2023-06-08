@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BookDetails from './BookDetails';
+import { Box, Flex, ListItem, UnorderedList, Text, Image } from '@chakra-ui/react';
 
 function SuggestionsPopup({ suggestions, handleBookClick }) {
   const [selectedBookId, setSelectedBookId] = useState(null);
@@ -52,29 +53,29 @@ function SuggestionsPopup({ suggestions, handleBookClick }) {
   }
 
   return (
-    <div className="popup-container">
-      <ul>
+    <Box className="popup-container">
+      <UnorderedList>
         {suggestions.map((book) => (
-          <li key={book.id} onClick={() => handleBookSelection(book.id)}>
-            <h4>{book.title}</h4>
-            <img src={book.image_url} alt={book.title} />
-          </li>
+          <ListItem key={book.id} onClick={() => handleBookSelection(book.id)}>
+            <Text as="h4">{book.title}</Text>
+            <Image src={book.image_url} alt={book.title} />
+          </ListItem>
         ))}
-      </ul>
+      </UnorderedList>
       {favoriteBooks.length > 0 && (
-        <div className="favorites-container">
-          <h3>Favorites</h3>
-          <ul>
+        <Box className="favorites-container">
+          <Text as="h4">Favorites</Text>
+          <UnorderedList>
             {favoriteBooks.map((book) => (
-              <li key={book.id}>
-                <h4>{book.title}</h4>
-                <img src={book.image_url} alt={book.title} />
-              </li>
+              <ListItem key={book.id}>
+                <Text as="h4">{book.title}</Text>
+                <Image src={book.image_url} alt={book.title} />
+              </ListItem>
             ))}
-          </ul>
-        </div>
+          </UnorderedList>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 }
 

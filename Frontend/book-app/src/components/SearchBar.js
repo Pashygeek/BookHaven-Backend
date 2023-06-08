@@ -1,14 +1,15 @@
 import React from 'react'
+import { Input, Button } from '@chakra-ui/react'
 
 function SearchBar({ searchQuery, handleInputChange, handleSearch}) {
   return (
     <div>
-        <input
+        <Input
         type='text'
         value={searchQuery}
         onChange={handleInputChange}
         />
-        <button onClick={handleSearch}>Search For Book</button>
+        <Button onClick={handleSearch}>Search For Book</Button>
     </div>
   )
 }
