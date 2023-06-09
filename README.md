@@ -17,7 +17,7 @@ Welcome to the BookHaven! This application allows you to keep track of your favo
 
 ## Live Demo
 
-You can access the live demo of the Book App at [http://localhost:3000]. 
+You can access the live demo of the Book App at [http://localhost:3000/]. 
 
 ## Getting Started
 
