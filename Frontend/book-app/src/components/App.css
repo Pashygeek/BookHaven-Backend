@@ -1,3 +1,7 @@
+.container {
+  background-color: #333;
+  margin-top: 0;
+}
 .nav {
     background-color: white;
     height: 30px;
@@ -43,7 +47,7 @@
     display: flex;
     align-items: center;
     margin-right: auto;
-    margin-top: 10px;
+    margin-top: 0px;
     margin-bottom: 20px;
   }
   
@@ -58,20 +62,22 @@
   
 /* Home page */
   .home-container {
-    background-image: url('https://www.pwcva.gov/assets/2022-11/mikolaj-DCzpr09cTXY-unsplash.jpg');
+    background-image: url('https://images6.alphacoders.com/346/thumb-1920-346199.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 200vh;
   }
 
   .content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
-    height: 100%; 
-    padding: 20px; 
   }
   
 
@@ -79,3 +85,84 @@
     max-width: 200px;
     height: auto;
 }
+
+.book-details{
+  margin-top: 20px;
+  text-align: right;
+}
+
+
+/* Search popup styling */
+.book-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 600px;
+  height: 100px;
+  padding: 1rem;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  cursor: pointer;
+  flex: 0 0 auto;
+  margin: 0.5rem;
+}
+
+.book-container:hover {
+  background-color: #e0e0e0;
+}
+
+.book-image {
+  max-width: 200px;
+  height: auto;
+}
+
+.book-title {
+  flex-grow: 1;
+  margin-right: 1rem;
+}
+
+.search-results-container ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+
+/* Favorites */
+
+.favorites-page {
+  background-image: url('../favorites.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 200vh;
+}
+
+.fav-card {
+  background-color: #f2f2f2;
+}
+
+/* Search */
+.search-bar {
+  justify-content: center;
+  align-items: center;
+  margin-top: 90px;
+}
+
+/* All tittles */
+.favorites-title{
+
+}
+
+.loading-title {
+
+}
+
+.categories-title{
+
+}
+
+.book-form-title {
+  
+}
+

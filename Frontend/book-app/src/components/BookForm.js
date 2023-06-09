@@ -62,13 +62,31 @@ const BookForm = () => {
     };
   
     const handleRemove = () => {
-      localStorage.removeItem('addedBook');
-      setAddedBook(null);
+      if(addedBook) {
+        const bookId = addedBook.id;
+
+        fetch(`http://localhost:9292/books/${bookId}`, {
+          method: 'DELETE',
+        })
+
+        .then((response)=> {
+          if(response.status === 200) {
+            console.log("Book deleted successfully!");
+            localStorage.removeItem('addedBook');
+            setAddedBook(null);
+          } else {
+            console.log("Failed to delete the book.")
+          }
+        })
+        .catch((error)=> {
+          console.log("Error:", error);
+        })
+      }
     };
   
     return (
       <div>
-        <h2>Add New Book</h2>
+        <h2 className='book-form-title'>Add New Book</h2>
         <form onSubmit={handleSubmit}>
           <FormControl>
           <FormLabel>Title:</FormLabel>
@@ -121,7 +139,7 @@ const BookForm = () => {
             <p>Description: {addedBook.description}</p>
             <p>Category: {addedBook.category}</p>
             <p>Image: {addedBook.image}</p>
-            <button onClick={handleRemove}>Remove Book</button>
+            <Button colorScheme='Red' onClick={handleRemove}>Remove Book</Button>
           </div>
         )}
       </div>

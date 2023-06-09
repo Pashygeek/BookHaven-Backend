@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link as RouterLink } from "react-router-dom";
 import logo from './logo.png'
+
 import {
   Box,
   Flex,
@@ -16,23 +17,24 @@ import BookDetails from "./components/BookDetails";
 import BookForm from "./components/BookForm";
 import "./components/popupsearch.css";
 import "./components/App.css";
+import About from "./components/About";
 
 function App() {
   return (
     <ChakraProvider>
       <Router>
-        <Box>
-        <div className="title-logo-container">
-        <ChakraLink as={RouterLink} to="/">
-        <img src={logo} alt="Logo" />
-                </ChakraLink>
-              <h1 className="title">BookHaven</h1>
-            </div>
+        <Box className="container">
+          <div className="title-logo-container">
+            <ChakraLink as={RouterLink} to="/">
+              <img src={logo} alt="Logo" />
+            </ChakraLink>
+            <h1 className="title">BookHaven</h1>
+          </div>
           <div className="nav">
             <ul>
               <li>
                 <ChakraLink as={RouterLink} to="/">
-                  Home
+                   Home
                 </ChakraLink>
               </li>
               <li>
@@ -59,6 +61,8 @@ function App() {
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/books/:id" element={<BookDetails />} />
             <Route path="/add-book" element={<BookForm />} />
+            <Route path="/about" element={<About />} />
+
           </Routes>
         </Box>
       </Router>
