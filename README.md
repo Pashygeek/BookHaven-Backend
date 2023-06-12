@@ -12,8 +12,7 @@ Welcome to the BookHaven! This application allows you to keep track of your favo
 - Sinatra: A lightweight Ruby web framework for building web applications.
 - ActiveRecord: An Object-Relational Mapping (ORM) library for database interactions in Ruby.
 - SQLite: A simple, serverless database engine used for storing application data.
-- HTML/CSS: Used for the application's frontend and styling.
-- JavaScript: Provides interactivity and enhances user experience on the client-side.
+- React: Used for the application's frontend and styling and provides interactivity and enhances user experience on the client-side.
 
 ## Live Demo
 
