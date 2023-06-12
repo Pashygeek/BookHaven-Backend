@@ -1,4 +1,4 @@
-puts "🌱 Seeding spices..."
+puts "🌱 Seeding spices...."
 
 # Create categories
 categories = ["Fantasy", "Fiction", "Romance", "Mystery", "Horror"]
